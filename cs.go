@@ -220,6 +220,7 @@ func main() {
 		os.Exit(0)
 	case command == "version":
 		fmt.Printf("Version: %s\n", version)
+		os.Exit(0)
 	case command == "help":
 		fmt.Println(`
 Desc: Easy cluster switching utility
@@ -247,8 +248,10 @@ Usage:
 		} else if command == "okd" {
 			connectAndLogin(OCP_VPN_NAME, OKD_HOST, OCP_USERNAME, OCP_PASSWORD, VPN_TIMEOUT_IN_SECONDS_INT, loginOpenshift)
 		}
+		os.Exit(0)
 
 	default:
-		fmt.Printf("Error! No cluster or command '%s' available. Please run 'cs help' to see the usage.", command)
+		fmt.Printf("Error! No cluster or command '%s' is available. Please run 'cs help' to see the usage.\n", command)
+		os.Exit(0)
 	}
 }
